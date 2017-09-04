@@ -19,8 +19,8 @@ client = discord.Client()
 # Load previously registered users
 registeredUsers = {}
 
-if os.path.isfile('registered_users_db.json'):
-    with open('registered_users_db.json', 'r') as data_file:
+if os.path.isfile('/db/registered_users_db.json'):
+    with open('/db/registered_users_db.json', 'r') as data_file:
         jsonData = json.load(data_file)
         registeredUsers = {userId: (userData[0], timezone(userData[1])) for userId, userData in jsonData.items()}
 
@@ -77,7 +77,7 @@ async def registerCommand(message):
     jsonDict = {userId: (userData[0], str(userData[1])) for userId, userData in registeredUsers.items()}
     jsonStr = json.dumps(jsonDict)
 
-    async with aiofiles.open('registered_users_db.json', mode='w') as file:
+    async with aiofiles.open('/db/registered_users_db.json', mode='w') as file:
         await file.write(jsonStr)
 
     await client.send_message(message.channel, "Successfully registered!")
