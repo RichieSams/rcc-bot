@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
 RUN apk add --no-cache \
-	python3.6 \
+	python3 \
 	
 	&& easy_install-3.6 pip \
 	&& pip install --upgrade pip
