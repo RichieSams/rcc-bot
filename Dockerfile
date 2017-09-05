@@ -13,8 +13,8 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
-COPY main.py /app/main.py
-	
 RUN pip install -r requirements.txt
+
+COPY main.py /app/main.py
 
 CMD ["python3", "main.py"]
