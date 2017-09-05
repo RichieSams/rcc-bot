@@ -6,7 +6,7 @@ RUN apk add --no-cache \
 	&& easy_install-3.6 pip \
 	&& pip install --upgrade pip
 
-MKDIR /app
+RUN mkdir /app
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
