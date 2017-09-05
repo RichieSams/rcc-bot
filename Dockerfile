@@ -1,6 +1,9 @@
 FROM alpine:3.6
 
+RUN apk add --no-cache ca-certificates
+
 RUN apk add --no-cache \
+	openssl \
 	python3 \
 	
 	&& easy_install-3.6 pip \
