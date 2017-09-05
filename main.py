@@ -44,20 +44,20 @@ async def registerCommand(message):
     timezoneStr = exploded[1]
     user = message.author
     if len(exploded) >= 3:
-		# If the user has a nickname, the format will be <@!1234...>
-		# If they *don't* have a nickname, the format will be <@1234...>
-		# So we try for both
+        # If the user has a nickname, the format will be <@!1234...>
+        # If they *don't* have a nickname, the format will be <@1234...>
+        # So we try for both
         result = re.search('<@([0-9]+)>', exploded[2])
         if result and result.group(1):
             userId = result.group(1)
         else:
-			result = re.search('<@!([0-9]+)>', exploded[2])
-			if result and result.group(1):
-				userId = result.group(1)
-			else:
-				await client.send_message(message.channel,
-										  "Failed to parse the member name [{0}]".format(exploded[2]))
-				return
+            result = re.search('<@!([0-9]+)>', exploded[2])
+            if result and result.group(1):
+                userId = result.group(1)
+            else:
+                await client.send_message(message.channel,
+                                          "Failed to parse the member name [{0}]".format(exploded[2]))
+                return
 
         user = next((mention for mention in message.mentions if mention.id == userId), [None])
         if user is None:
