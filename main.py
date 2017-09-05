@@ -44,7 +44,7 @@ async def registerCommand(message):
     timezoneStr = exploded[1]
     user = message.author
     if len(exploded) >= 3:
-        result = re.search('<@([0-9]+)>', exploded[2])
+        result = re.search('<@!([0-9]+)>', exploded[2])
         if result and result.group(1):
             userId = result.group(1)
         else:
